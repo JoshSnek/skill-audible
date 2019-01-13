@@ -9,7 +9,7 @@
 
 from amazon.api import AmazonAPI
 
-from mycroft.skills.core import MycroftSkill, intent_handler
+from mycroft.skills.core import MycroftSkill, intent_handler, intent_file_handler
 from mycroft.util.log import LOG
 from adapt.intent import IntentBuilder
 
