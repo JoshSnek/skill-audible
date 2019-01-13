@@ -1,0 +1,3 @@
+ play the book {bookname}
+ play the audio book {bookname}
+ play {bookname} from Audible
