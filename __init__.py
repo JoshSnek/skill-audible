@@ -18,27 +18,23 @@ from adapt.intent import IntentBuilder
 
 # TODO: Change "Template" to a unique name for your skill
 class AudibleSkill(MycroftSkill):
-
-    # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
         super(AudibleSkill, self).__init__(name="AudibleSkill")
         # Initialize working variables used within the skill.
-        self.count = 0
 
-    @intent_handler(IntentBuilder("").require("Audible").require("Play"))
+    @intent_file_handler('launchwith.intent')
     def handle_launch_audible_intent(self, message):
         # Mycroft will randomly speak one of the lines from the file
         #    dialogs/en-us/launchmessage.dialog
         self.book_name = message.data["bookname"]
         self.speak_dialog("launchmessage")
 """
-    @intent_handler(IntentBuilder("").require("Count").require("Dir"))
-    def handle_count_intent(self, message):
-        if message.data["Dir"] == "up":
-            self.count += 1
-        else:  # assume "down"
-            self.count -= 1
-        self.speak_dialog("count.is.now", data={"count": self.count})
+    @intent_handler(IntentBuilder("").require("Audible").require("Play"))
+    def handle_launch_audible_intent(self, message):
+        # Mycroft will randomly speak one of the lines from the file
+        #    dialogs/en-us/launchmessage.dialog
+        self.book_name = message.data["bookname"]
+        self.speak_dialog("launchmessage")
 """
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
