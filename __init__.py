@@ -47,7 +47,7 @@ class AudibleSkill(MycroftSkill):
         self.speak("got here")
         self.book_name = message.data["bookname"]
         self.speak(self.book_name)
-        self.speak_dialog("launchmessage")
+        self.speak_dialog("launchmessage", {"book_name" : self.book_name})
 
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
