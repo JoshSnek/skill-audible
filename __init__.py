@@ -23,42 +23,23 @@ SOFTWARE.
 """
 # If you use an external library, be sure to include it
 # in the requirements.txt file so the library is installed properly
-# when the skill gets installed later by a user.
-
-#from amazon.api import AmazonAPI
 
 from mycroft.skills.core import MycroftSkill, intent_file_handler
-#from mycroft.util.log import LOG
 from adapt.intent import IntentBuilder
 
-# Each skill is contained within its own class, which inherits base methods
-# from the MycroftSkill class.  You extend this class as shown below.
-
-# TODO: Change "Template" to a unique name for your skill
 class AudibleSkill(MycroftSkill):
     def __init__(self):
-        super(AudibleSkill, self).__init__(name="AudibleSkill")
+        super(AudibleSkill, self).__init__(name="Audible")
         # Initialize working variables used within the skill.
 
-    @intent_file_handler("launchwith.intent")#(IntentBuilder("").require("Audible").require("Play"))
+    @intent_file_handler("launchwith.intent")
     def handle_launch_audible_intent(self, message):
-        # Mycroft will randomly speak one of the lines from the file
-        #    dialogs/en-us/launchmessage.dialog
-        self.speak("got here")
         self.book_name = message.data["bookname"]
-        self.speak(self.book_name)
         self.speak_dialog("launchmessage", {"book_name" : self.book_name})
 
-    # The "stop" method defines what Mycroft does when told to stop during
-    # the skill's execution. In this case, since the skill's functionality
-    # is extremely simple, there is no need to override it.  If you DO
-    # need to implement stop, you should return True to indicate you handled
-    # it.
-    #
+    # If you DO need to implement stop, you should return True to indicate you handled it.
     # def stop(self):
     #    return False
 
-# The "create_skill()" method is used to create an instance of the skill.
-# Note that it's outside the class itself.
 def create_skill():
     return AudibleSkill()

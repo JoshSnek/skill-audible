@@ -1,1 +1,1 @@
-Hello {{book_name}}
+Unfortunately, currently Audible has no public API and so I cannot play {{book_name}}
