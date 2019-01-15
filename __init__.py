@@ -28,7 +28,7 @@ SOFTWARE.
 #from amazon.api import AmazonAPI
 
 from mycroft.skills.core import MycroftSkill, intent_handler
-from mycroft.util.log import LOG
+#from mycroft.util.log import LOG
 from adapt.intent import IntentBuilder
 
 # Each skill is contained within its own class, which inherits base methods
@@ -44,7 +44,9 @@ class AudibleSkill(MycroftSkill):
     def handle_launch_audible_intent(self, message):
         # Mycroft will randomly speak one of the lines from the file
         #    dialogs/en-us/launchmessage.dialog
+        self.speak("got here")
         self.book_name = message.data["bookname"]
+        self.speak(self.book_name)
         self.speak_dialog("launchmessage")
 
     # The "stop" method defines what Mycroft does when told to stop during
