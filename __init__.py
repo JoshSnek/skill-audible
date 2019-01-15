@@ -27,7 +27,7 @@ SOFTWARE.
 
 #from amazon.api import AmazonAPI
 
-from mycroft.skills.core import MycroftSkill, intent_handler
+from mycroft.skills.core import MycroftSkill, intent_file_handler
 #from mycroft.util.log import LOG
 from adapt.intent import IntentBuilder
 
@@ -40,7 +40,7 @@ class AudibleSkill(MycroftSkill):
         super(AudibleSkill, self).__init__(name="AudibleSkill")
         # Initialize working variables used within the skill.
 
-    @intent_handler(IntentBuilder("").require("Audible").require("Play"))
+    @intent_file_handler("launchwith.intent")#(IntentBuilder("").require("Audible").require("Play"))
     def handle_launch_audible_intent(self, message):
         # Mycroft will randomly speak one of the lines from the file
         #    dialogs/en-us/launchmessage.dialog
